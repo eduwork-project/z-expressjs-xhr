@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunci Tugas XHR</title>
+</head>
+<body>
+  <script>
+    function reqListener () {
+      const res = JSON.parse(this.responseText);
+      console.log(`status: ${this.status}`);
+      console.log(res);
+      console.log("process done.");
+    }
+
+    function main() {
+      const url = "https://jsonplaceholder.typicode.com/users";
+      const req = new XMLHttpRequest();
+      req.addEventListener("load", reqListener);
+      req.open("GET", url);
+      console.log(`requesting ${url}`);
+      console.log("loading...");
+      req.send();      
+    }
+
+    // load on document ready
+    document.addEventListener("DOMContentLoaded", main);
+  </script>
+</body>
+</html>
